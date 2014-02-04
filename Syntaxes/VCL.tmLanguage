@@ -527,7 +527,7 @@
       <array>
         <dict>
           <key>match</key>
-          <string>\b(call|hash_data|panic|ban|ban_url|remove|return|rollback|set|synthetic|unset|purge|error)\b</string>
+          <string>\b(call|hash_data|panic|ban|ban_url|remove|return|rollback|set|synthetic|unset|purge|error|regsub|regsuball|std\.log)\b</string>
           <key>name</key>
           <string>keyword.control.vcl.action</string>
         </dict>
@@ -579,7 +579,7 @@
         </dict>
         <dict>
           <key>match</key>
-          <string>\b(regsub|regsuball|true|false|pass|lookup|hit_for_pass|pipe|deliver)\b(?![?!])</string>
+          <string>\b(true|false|pass|lookup|hit_for_pass|pipe|deliver)\b(?![?!])</string>
           <key>name</key>
           <string>constant.language.vcl</string>
         </dict>
