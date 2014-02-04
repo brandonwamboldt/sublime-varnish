@@ -583,7 +583,12 @@
           <key>name</key>
           <string>constant.language.vcl</string>
         </dict>
-
+        <dict>
+          <key>match</key>
+          <string>\b\d+</string>
+          <key>name</key>
+          <string>constant.numeric.vcl</string>
+        </dict>
         <dict>
           <key>include</key>
           <string>#comment</string>
