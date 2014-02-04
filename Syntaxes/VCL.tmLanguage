@@ -554,7 +554,7 @@
         </dict>
         <dict>
           <key>match</key>
-          <string>\b(hash_data|ban|ban_url|regsub|regsuball|std\.log)\b</string>
+          <string>\b(hash_data|ban|ban_url|regsub|regsuball|std\.log|redis[0-9]?\.[a-z]+)\b</string>
           <key>name</key>
           <string>support.function.vcl</string>
         </dict>
