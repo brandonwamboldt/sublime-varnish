@@ -543,7 +543,7 @@
           <key>match</key>
           <string>(client|server|req|bereq|beresp|obj|resp)\.[a-zA-Z0-9\-\._]+</string>
           <key>name</key>
-          <string>variable.global.vcl</string>
+          <string>variable.other.global.vcl</string>
         </dict>
       </array>
     </dict>
