@@ -525,6 +525,18 @@
         </dict>
       </array>
     </dict>
+    <key>variables</key>
+    <dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>match</key>
+          <string>(client|server|req|bereq|beresp|obj|resp)\.[a-zA-Z0-9\-\.]+</string>
+          <key>name</key>
+          <string>variable.global.req.vcl</string>
+        </dict>
+      </array>
+    </dict>
     <key>sub-body</key>
     <dict>
       <key>patterns</key>
@@ -553,6 +565,10 @@
           <string>\b(hash_data|ban|ban_url|regsub|regsuball|std\.log)\b</string>
           <key>name</key>
           <string>support.function.vcl</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#variables</string>
         </dict>
         <dict>
           <key>match</key>
