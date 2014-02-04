@@ -591,6 +591,10 @@
         </dict>
         <dict>
           <key>include</key>
+          <string>#keyword-include</string>
+        </dict>
+        <dict>
+          <key>include</key>
           <string>#comment</string>
         </dict>
         <dict>
