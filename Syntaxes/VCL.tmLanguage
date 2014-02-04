@@ -579,7 +579,7 @@
         </dict>
         <dict>
           <key>match</key>
-          <string>\b(regsub|regsuball|true|false)\b(?![?!])</string>
+          <string>\b(regsub|regsuball|true|false|pass|lookup|hit_for_pass|pipe|deliver)\b(?![?!])</string>
           <key>name</key>
           <string>constant.language.vcl</string>
         </dict>
