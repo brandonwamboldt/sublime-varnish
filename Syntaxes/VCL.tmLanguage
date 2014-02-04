@@ -541,9 +541,9 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(client|server|req|bereq|beresp|obj|resp)\.[a-zA-Z0-9\-\.]+</string>
+          <string>(client|server|req|bereq|beresp|obj|resp)\.[a-zA-Z0-9\-\._]+</string>
           <key>name</key>
-          <string>variable.global.req.vcl</string>
+          <string>variable.global.vcl</string>
         </dict>
       </array>
     </dict>
