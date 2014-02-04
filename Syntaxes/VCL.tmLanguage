@@ -41,6 +41,10 @@
       <key>include</key>
       <string>#keywords-others</string>
     </dict>
+    <dict>
+      <key>include</key>
+      <string>#embedded-ruby</string>
+    </dict>
   </array>
   <key>repository</key>
   <dict>
@@ -72,6 +76,14 @@
             <dict>
               <key>include</key>
               <string>#long-string</string>
+            </dict>
+            <dict>
+              <key>include</key>
+              <string>#embedded-ruby</string>
+            </dict>
+            <dict>
+              <key>include</key>
+              <string>#embedded-ruby-comment</string>
             </dict>
           </array>
         </dict>
@@ -152,6 +164,14 @@
               <key>include</key>
               <string>#long-string</string>
             </dict>
+            <dict>
+              <key>include</key>
+              <string>#embedded-ruby</string>
+            </dict>
+            <dict>
+              <key>include</key>
+              <string>#embedded-ruby-comment</string>
+            </dict>
           </array>
         </dict>
         <dict>
@@ -200,6 +220,29 @@
             </dict>
           </array>
         </dict>
+        <dict>
+          <key>begin</key>
+          <string>\.(max_connections)\s*=</string>
+          <key>captures</key>
+          <dict>
+            <key>1</key>
+            <dict>
+              <key>name</key>
+              <string>support.other.backend.subkey.vcl</string>
+            </dict>
+          </dict>
+          <key>end</key>
+          <string>;</string>
+          <key>name</key>
+          <string>meta.backend.subkeys.max_connections.vcl</string>
+          <key>patterns</key>
+          <array>
+            <dict>
+              <key>include</key>
+              <string>#number-spec</string>
+            </dict>
+          </array>
+        </dict>
       </array>
     </dict>
     <key>comment</key>
@@ -239,13 +282,38 @@
     </dict>
     <key>keyword-acl</key>
     <dict>
+      <key>begin</key>
+      <string>\b(acl)\s+([a-zA-Z0-9_]+)\s*{</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.other.vcl.acl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.acl.vcl</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>}</string>
+      <key>name</key>
+      <string>meta.acl.vcl</string>
       <key>patterns</key>
       <array>
         <dict>
-          <key>match</key>
-          <string>\b(acl)\b</string>
-          <key>name</key>
-          <string>keyword.other.vcl.acl</string>
+          <key>include</key>
+          <string>#quoted-string</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#embedded-ruby</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#embedded-ruby-comment</string>
         </dict>
       </array>
     </dict>
@@ -356,6 +424,61 @@
         </dict>
       </array>
     </dict>
+    <key>embedded-ruby-comment</key>
+    <dict>
+      <key>begin</key>
+      <string>&lt;%+#</string>
+      <key>captures</key>
+      <dict>
+        <key>0</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.comment.erb</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>%&gt;</string>
+      <key>name</key>
+      <string>comment.block.erb</string>
+    </dict>
+    <key>embedded-ruby</key>
+    <dict>
+      <key>begin</key>
+      <string>&lt;%+(?!&gt;)[-=]?</string>
+      <key>captures</key>
+      <dict>
+        <key>0</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.section.embedded.ruby</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>-?%&gt;</string>
+      <key>name</key>
+      <string>source.ruby.rails.embedded.html</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>captures</key>
+          <dict>
+            <key>1</key>
+            <dict>
+              <key>name</key>
+              <string>punctuation.definition.comment.ruby</string>
+            </dict>
+          </dict>
+          <key>match</key>
+          <string>(#).*?(?=-?%&gt;)</string>
+          <key>name</key>
+          <string>comment.line.number-sign.ruby</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>source.ruby.rails</string>
+        </dict>
+      </array>
+    </dict>
     <key>long-string</key>
     <dict>
       <key>begin</key>
@@ -436,6 +559,7 @@
           <key>name</key>
           <string>constant.language.vcl</string>
         </dict>
+
         <dict>
           <key>include</key>
           <string>#comment</string>
@@ -447,6 +571,14 @@
         <dict>
           <key>include</key>
           <string>#long-string</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#embedded-ruby</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#embedded-ruby-comment</string>
         </dict>
       </array>
     </dict>
