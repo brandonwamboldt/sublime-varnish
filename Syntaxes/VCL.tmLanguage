@@ -35,6 +35,10 @@
     </dict>
     <dict>
       <key>include</key>
+      <string>#keyword-include</string>
+    </dict>
+    <dict>
+      <key>include</key>
       <string>#keyword-sub</string>
     </dict>
     <dict>
@@ -353,18 +357,38 @@
         <key>1</key>
         <dict>
           <key>name</key>
-          <string>keyword.control.backend.vcl</string>
+          <string>keyword.control.import.vcl</string>
         </dict>
         <key>2</key>
         <dict>
           <key>name</key>
-          <string>entity.name.backend.vcl</string>
+          <string>string.quoted.double.vcl</string>
         </dict>
       </dict>
       <key>match</key>
       <string>\b(import)\s+([a-zA-Z0-9_]+)</string>
       <key>name</key>
-      <string>meta.import.vcl</string>
+      <string>keyword.import.vcl</string>
+    </dict>
+    <key>keyword-include</key>
+    <dict>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.control.include.vcl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>string.quoted.double.vcl</string>
+        </dict>
+      </dict>
+      <key>match</key>
+      <string>\b(include)\s+(["'].+?["'])</string>
+      <key>name</key>
+      <string>keyword.include.vcl</string>
     </dict>
     <key>keyword-sub</key>
     <dict>
