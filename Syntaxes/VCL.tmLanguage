@@ -526,56 +526,29 @@
       <key>patterns</key>
       <array>
         <dict>
+          <key>begin</key>
+          <string>\{</string>
+          <key>end</key>
+          <string>\}</string>
+          <key>patterns</key>
+          <array>
+            <dict>
+              <key>include</key>
+              <string>#sub-body</string>
+            </dict>
+          </array>
+        </dict>
+        <dict>
           <key>match</key>
-          <string>\b(call|hash_data|panic|ban|ban_url|remove|return|rollback|set|synthetic|unset|purge|error|regsub|regsuball|std\.log)\b</string>
+          <string>\b(call|panic|remove|return|rollback|set|synthetic|unset|purge|error|if|elseif|elsif|else)\b</string>
           <key>name</key>
           <string>keyword.control.vcl.action</string>
         </dict>
         <dict>
-          <key>begin</key>
-          <string>\b(if|elseif|elsif)\s*\((.+)\)\s*(\{\s*|$)</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>keyword.control.vcl.if</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>}</string>
+          <key>match</key>
+          <string>\b(hash_data|ban|ban_url|regsub|regsuball|std\.log)\b</string>
           <key>name</key>
-          <string>meta.control.vcl.if</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#sub-body</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\b(else)\s*(\{\s*|$)</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>keyword.control.vcl.else</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>}</string>
-          <key>name</key>
-          <string>meta.control.vcl.else</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#sub-body</string>
-            </dict>
-          </array>
+          <string>support.function.vcl</string>
         </dict>
         <dict>
           <key>match</key>
