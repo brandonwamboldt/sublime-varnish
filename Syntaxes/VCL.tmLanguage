@@ -552,19 +552,6 @@
       <key>patterns</key>
       <array>
         <dict>
-          <key>begin</key>
-          <string>\{</string>
-          <key>end</key>
-          <string>\}</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#sub-body</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
           <key>match</key>
           <string>\b(call|panic|remove|return|rollback|set|synthetic|unset|purge|error|if|elseif|elsif|else)\b</string>
           <key>name</key>
@@ -582,13 +569,17 @@
         </dict>
         <dict>
           <key>match</key>
-          <string>\b(true|false|pass|lookup|hit_for_pass|pipe|deliver)\b(?![?!])</string>
+          <string>\b(true|false|pass|lookup|hit_for_pass|pipe|deliver|ok|fetch|hash)\b(?![?!])</string>
           <key>name</key>
           <string>constant.language.vcl</string>
         </dict>
         <dict>
+          <key>include</key>
+          <string>#time-spec</string>
+        </dict>
+        <dict>
           <key>match</key>
-          <string>\b\d+[smdh]?</string>
+          <string>\b\d+</string>
           <key>name</key>
           <string>constant.numeric.vcl</string>
         </dict>
@@ -611,6 +602,19 @@
         <dict>
           <key>include</key>
           <string>#embedded-ruby-comment</string>
+        </dict>
+        <dict>
+          <key>begin</key>
+          <string>\{</string>
+          <key>end</key>
+          <string>\}</string>
+          <key>patterns</key>
+          <array>
+            <dict>
+              <key>include</key>
+              <string>#sub-body</string>
+            </dict>
+          </array>
         </dict>
       </array>
     </dict>
