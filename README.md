@@ -5,6 +5,9 @@ This is a syntax highlighting plugin for Varnish VCL files in Sublime Text 2/3 t
 
 With this plugin, I have fixed many of those bugs and will actively maintain and extend it, as I frequently work with Varnish.
 
+![screenshot](https://github.com/brandonwamboldt/sublime-varnish/blob/master/screenshot.png?raw=true "Screenshot using SpaceGray theme")
+
+
 Embedded Ruby
 -------------
 
