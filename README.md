@@ -1,14 +1,10 @@
 VCL Syntax Highlighting Plugin
 ==============================
 
-This is a syntax highlighting plugin for Varnish VCL files in Sublime Text 2/3 that isn't completely broken. I was using the only other syntax file out there, [zephirworks/Varnish.tmbundle](https://github.com/zephirworks/Varnish.tmbundle), but it was pretty broken for my VCL files. It doesn't support a lot of things, like long strings (`{"string"}` syntax), `.max_connections` in your backends, etc. It also doesn't provide syntax highlighting for functions, variables, etc.
+This is a syntax highlighting plugin for Varnish VCL files in Sublime Text 2/3 that isn't completely broken, and supports the majority of Varnish VCL features.
 
-With this plugin, I have fixed many of those bugs and will actively maintain and extend it, as I frequently work with Varnish.
+It's been written from scratch and is extremely fast. Some of the other VCL tmLanguage files floating around there have causing my Sublime Text CPU usage to spike because of their complex regex. This plugin has no such issue.
+
+If I've missed something, please open an issue so I can fix it (or send me a Pull Request). I work with Varnish daily, so I'll be actively maintaining this plugin.
 
 ![screenshot](https://github.com/brandonwamboldt/sublime-varnish/blob/master/screenshot.png?raw=true "Screenshot using SpaceGray theme")
-
-
-Embedded Ruby
--------------
-
-This syntax definition also supports Embedded Ruby (ERB) syntax highlighting in your VCL files, as some of my Varnish files are generated using ERB + Puppet.

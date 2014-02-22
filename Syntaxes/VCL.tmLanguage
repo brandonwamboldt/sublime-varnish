@@ -4,8 +4,8 @@
 <dict>
   <key>fileTypes</key>
   <array>
-    <string>vcl</string>
     <string>vcl.erb</string>
+    <string>vcl</string>
   </array>
   <key>foldingStartMarker</key>
   <string>^.*\b(backend|sub)\s*(\w+\s*)?(\s*\{[^\}]*)?\s*$</string>
@@ -18,289 +18,183 @@
   <key>patterns</key>
   <array>
     <dict>
-      <key>include</key>
-      <string>#comment</string>
+      <key>match</key>
+      <string>\#.*</string>
+      <key>name</key>
+      <string>comment.line.number-sign</string>
     </dict>
     <dict>
-      <key>include</key>
-      <string>#keyword-acl</string>
+      <key>match</key>
+      <string>\/\/.*</string>
+      <key>name</key>
+      <string>comment.line.double-slash</string>
     </dict>
     <dict>
-      <key>include</key>
-      <string>#keyword-backend</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#keyword-import</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#keyword-include</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#keyword-sub</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#keywords-others</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#embedded-ruby</string>
-    </dict>
-    <dict>
-      <key>include</key>
-      <string>#sub-body</string>
-    </dict>
-  </array>
-  <key>repository</key>
-  <dict>
-    <key>backend-probe</key>
-    <dict>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>begin</key>
-          <string>\.(url)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.probe.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.probe.subkeys.string.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#strings</string>
-            </dict>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby</string>
-            </dict>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby-comment</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\.(timeout|interval)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.probe.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.subkeys.time.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#time-spec</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\.(window|threshold)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.probe.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.subkeys.number.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#number-spec</string>
-            </dict>
-          </array>
-        </dict>
-      </array>
-    </dict>
-    <key>backend-subkeys</key>
-    <dict>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>begin</key>
-          <string>\.(host|port)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.subkeys.string.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#strings</string>
-            </dict>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby</string>
-            </dict>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby-comment</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\.(probe)\s*=\s*{</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.probe.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>}</string>
-          <key>name</key>
-          <string>meta.backend.probe.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#backend-probe</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\.(connect_timeout|first_byte_timeout|between_bytes_timeout)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.subkeys.time.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#time-spec</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>\.(max_connections)\s*=</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>support.other.backend.subkey.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>;</string>
-          <key>name</key>
-          <string>meta.backend.subkeys.max_connections.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#number-spec</string>
-            </dict>
-          </array>
-        </dict>
-      </array>
-    </dict>
-    <key>comment</key>
-    <dict>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>begin</key>
-          <string>/\*</string>
-          <key>end</key>
-          <string>\*/</string>
-          <key>name</key>
-          <string>comment.block.vcl</string>
-        </dict>
-        <dict>
-          <key>match</key>
-          <string>(#).*$\n?</string>
-          <key>name</key>
-          <string>comment.line.vcl</string>
-        </dict>
-      </array>
-    </dict>
-    <key>function-invocation</key>
-    <dict>
-      <key>captures</key>
+      <key>name</key>
+      <string>meta.include.vcl</string>
+      <key>begin</key>
+      <string>\b(import|include)\b\s*</string>
+      <key>beginCaptures</key>
       <dict>
         <key>1</key>
         <dict>
           <key>name</key>
-          <string>entity.name.function.vcl</string>
+          <string>keyword.control.import.php</string>
         </dict>
       </dict>
-      <key>match</key>
-      <string>\b(\S+)\((.*)\)</string>
-      <key>name</key>
-      <string>meta.control.function</string>
+      <key>end</key>
+      <string>(?=\s|;|$)</string>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>#strings</string>
+        </dict>
+      </array>
     </dict>
-    <key>keyword-acl</key>
     <dict>
-      <key>begin</key>
-      <string>\b(acl)\s+([a-zA-Z0-9_]+)\s*{</string>
+      <key>name</key>
+      <string>meta.director.vcl</string>
+      <key>match</key>
+      <string>(?i)^\s*(director)\s+([a-z0-9_]+)\s+(round\-robin|random|client|hash|dns|fallback)\s*</string>
       <key>captures</key>
       <dict>
         <key>1</key>
         <dict>
           <key>name</key>
-          <string>keyword.other.vcl.acl</string>
+          <string>storage.type.director.vcl</string>
         </dict>
         <key>2</key>
         <dict>
           <key>name</key>
-          <string>entity.name.acl.vcl</string>
+          <string>entity.name.type.director.vcl</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>storage.type.director.family.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>meta.backend.vcl</string>
+      <key>match</key>
+      <string>(?i)^\s*(backend)\s+([a-z0-9_]+)\s*</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>storage.type.backend.vcl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.backend.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>meta.acl.vcl</string>
+      <key>match</key>
+      <string>(?i)^\s*(acl)\s+([a-z0-9_]+)\s*</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>storage.type.acl.vcl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.acl.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>meta.probe.vcl</string>
+      <key>match</key>
+      <string>(?i)^\s*(probe)\s+([a-z0-9_]+)\s*</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>storage.type.probe.vcl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.probe.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>variable.subkey.vcl</string>
+      <key>match</key>
+      <string>\.(max_connections|first_byte_timeout|between_bytes_timeout|probe|host_header|retries|backend|weight|host|list|port|connect_timeout|ttl|suffix|url|request|window|threshold|initial|expected_response|interval|timeout)\b</string>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>meta.subroutine.vcl</string>
+      <key>match</key>
+      <string>(?i)^\s*(sub)\s+([a-z0-9_]+)\s*</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>storage.type.subroutine.vcl</string>
+        </dict>
+        <key>2</key>
+        <dict>
+          <key>name</key>
+          <string>entity.name.type.subroutine.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(return)\s*\(((deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart)|([^\)]+))\)</string>
+      <key>captures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.control.vcl</string>
+        </dict>
+        <key>3</key>
+        <dict>
+          <key>name</key>
+          <string>constant.language.return.vcl</string>
+        </dict>
+        <key>4</key>
+        <dict>
+          <key>name</key>
+          <string>invalid.illegal.unrecognized.vcl</string>
+        </dict>
+      </dict>
+    </dict>
+    <dict>
+      <key>name</key>
+      <string>meta.error.vcl</string>
+      <key>begin</key>
+      <string>\b(error)\b\s*</string>
+      <key>beginCaptures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>keyword.control.error.php</string>
         </dict>
       </dict>
       <key>end</key>
-      <string>}</string>
-      <key>name</key>
-      <string>meta.acl.vcl</string>
+      <string>(?=\s|;|$)</string>
       <key>patterns</key>
       <array>
         <dict>
@@ -309,229 +203,78 @@
         </dict>
         <dict>
           <key>include</key>
-          <string>#embedded-ruby</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#embedded-ruby-comment</string>
+          <string>#numbers</string>
         </dict>
       </array>
     </dict>
-    <key>keyword-backend</key>
     <dict>
-      <key>begin</key>
-      <string>\b(backend)\s+(.*?)\s*{</string>
-      <key>captures</key>
-      <dict>
-        <key>1</key>
-        <dict>
-          <key>name</key>
-          <string>keyword.control.backend.vcl</string>
-        </dict>
-        <key>2</key>
-        <dict>
-          <key>name</key>
-          <string>entity.name.backend.vcl</string>
-        </dict>
-      </dict>
-      <key>end</key>
-      <string>}</string>
-      <key>name</key>
-      <string>meta.backend.vcl</string>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>include</key>
-          <string>#backend-subkeys</string>
-        </dict>
-      </array>
-    </dict>
-    <key>keyword-import</key>
-    <dict>
-      <key>captures</key>
-      <dict>
-        <key>1</key>
-        <dict>
-          <key>name</key>
-          <string>keyword.control.import.vcl</string>
-        </dict>
-        <key>2</key>
-        <dict>
-          <key>name</key>
-          <string>string.quoted.double.vcl</string>
-        </dict>
-      </dict>
       <key>match</key>
-      <string>\b(import)\s+([a-zA-Z0-9_]+)</string>
-      <key>name</key>
-      <string>keyword.import.vcl</string>
-    </dict>
-    <key>keyword-include</key>
-    <dict>
+      <string>\b(set|unset|remove|synthetic|call|if|else|elsif|else if)\b</string>
       <key>captures</key>
       <dict>
         <key>1</key>
         <dict>
           <key>name</key>
-          <string>keyword.control.include.vcl</string>
-        </dict>
-        <key>2</key>
-        <dict>
-          <key>name</key>
-          <string>string.quoted.double.vcl</string>
+          <string>keyword.control.php</string>
         </dict>
       </dict>
-      <key>match</key>
-      <string>\b(include)\s+(["'].+?["'])</string>
-      <key>name</key>
-      <string>keyword.include.vcl</string>
     </dict>
-    <key>keyword-sub</key>
     <dict>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>begin</key>
-          <string>\b(sub)\s+([a-zA-Z0-9_]+)\s*{</string>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>keyword.sub.vcl.action</string>
-            </dict>
-            <key>2</key>
-            <dict>
-              <key>name</key>
-              <string>entity.name.function.vcl</string>
-            </dict>
-          </dict>
-          <key>end</key>
-          <string>}</string>
-          <key>name</key>
-          <string>meta.sub.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#sub-body</string>
-            </dict>
-          </array>
-        </dict>
-      </array>
+      <key>include</key>
+      <string>#variables</string>
     </dict>
-    <key>keywords-others</key>
+    <dict>
+      <key>include</key>
+      <string>#numbers</string>
+    </dict>
+    <dict>
+      <key>include</key>
+      <string>#strings</string>
+    </dict>
+    <dict>
+      <key>include</key>
+      <string>#functions</string>
+    </dict>
+    <dict>
+      <key>include</key>
+      <string>#constants</string>
+    </dict>
+  </array>
+  <key>repository</key>
+  <dict>
+    <key>constants</key>
     <dict>
       <key>patterns</key>
       <array>
         <dict>
           <key>match</key>
-          <string>\b(director|probe)\b</string>
+          <string>\b(true|false|now)\b</string>
           <key>name</key>
-          <string>keyword.other.vcl</string>
+          <string>constant.builtin.vcl</string>
         </dict>
       </array>
     </dict>
-    <key>number-spec</key>
+    <key>functions</key>
     <dict>
       <key>patterns</key>
       <array>
         <dict>
           <key>match</key>
-          <string>\d</string>
+          <string>(hash_data|regsuball|regsub|ban_url|ban|purge)</string>
           <key>name</key>
-          <string>constant.numeric.vcl</string>
+          <string>support.function.builtin.vcl</string>
         </dict>
-      </array>
-    </dict>
-    <key>embedded-ruby-comment</key>
-    <dict>
-      <key>begin</key>
-      <string>&lt;%+#</string>
-      <key>captures</key>
-      <dict>
-        <key>0</key>
         <dict>
-          <key>name</key>
-          <string>punctuation.definition.comment.erb</string>
-        </dict>
-      </dict>
-      <key>end</key>
-      <string>%&gt;</string>
-      <key>name</key>
-      <string>comment.block.erb</string>
-    </dict>
-    <key>embedded-ruby</key>
-    <dict>
-      <key>begin</key>
-      <string>&lt;%+(?!&gt;)[-=]?</string>
-      <key>captures</key>
-      <dict>
-        <key>0</key>
-        <dict>
-          <key>name</key>
-          <string>punctuation.section.embedded.ruby</string>
-        </dict>
-      </dict>
-      <key>end</key>
-      <string>-?%&gt;</string>
-      <key>name</key>
-      <string>source.ruby.rails.embedded.html</string>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>captures</key>
-          <dict>
-            <key>1</key>
-            <dict>
-              <key>name</key>
-              <string>punctuation.definition.comment.ruby</string>
-            </dict>
-          </dict>
           <key>match</key>
-          <string>(#).*?(?=-?%&gt;)</string>
+          <string>std\.(log|toupper|tolower|set_ip_tos|random|log|syslog|fileread|collect|duration|integer|ip)</string>
           <key>name</key>
-          <string>comment.line.number-sign.ruby</string>
+          <string>support.function.module.std.vcl</string>
         </dict>
         <dict>
-          <key>include</key>
-          <string>source.ruby.rails</string>
-        </dict>
-      </array>
-    </dict>
-    <key>strings</key>
-    <dict>
-      <key>patterns</key>
-      <array>
-        <dict>
-          <key>begin</key>
-          <string>\{"</string>
-          <key>end</key>
-          <string>"\}</string>
+          <key>match</key>
+          <string>redis[0-9]?\.(call|send|pipeline|init_redis)</string>
           <key>name</key>
-          <string>string.quoted.double.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby</string>
-            </dict>
-          </array>
-        </dict>
-        <dict>
-          <key>begin</key>
-          <string>"</string>
-          <key>end</key>
-          <string>"</string>
-          <key>name</key>
-          <string>string.quoted.double.vcl</string>
-          <key>patterns</key>
-          <array>
-            <dict>
-              <key>include</key>
-              <string>#embedded-ruby</string>
-            </dict>
-          </array>
+          <string>support.function.module.libvmodredis.vcl</string>
         </dict>
       </array>
     </dict>
@@ -541,92 +284,154 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(client|server|req|bereq|beresp|obj|resp)\.[a-zA-Z0-9\-\._]+</string>
+          <string>(req|bereq|obj|beresp|client|server|resp)\.[a-zA-Z0-9\-\_\.]+</string>
           <key>name</key>
-          <string>variable.other.global.vcl</string>
+          <string>variable.other.vcl</string>
         </dict>
       </array>
     </dict>
-    <key>sub-body</key>
+    <key>strings</key>
+    <dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>#string-long</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#string-single-quoted</string>
+        </dict>
+        <dict>
+          <key>include</key>
+          <string>#string-double-quoted</string>
+        </dict>
+      </array>
+    </dict>
+    <key>numbers</key>
     <dict>
       <key>patterns</key>
       <array>
         <dict>
           <key>match</key>
-          <string>\b(call|panic|remove|return|rollback|set|synthetic|unset|purge|error|if|elseif|elsif|else)\b</string>
+          <string>\b[0-9]+ ?(m|s|h|d|w)\b</string>
           <key>name</key>
-          <string>keyword.control.vcl.action</string>
+          <string>constant.numeric.time.vcl</string>
         </dict>
         <dict>
           <key>match</key>
-          <string>\b(hash_data|ban|ban_url|regsub|regsuball|std\.log|redis[0-9]?\.[a-z_]+)\b</string>
-          <key>name</key>
-          <string>support.function.vcl</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#variables</string>
-        </dict>
-        <dict>
-          <key>match</key>
-          <string>\b(true|false|pass|lookup|hit_for_pass|pipe|deliver|ok|fetch|hash)\b(?![?!])</string>
-          <key>name</key>
-          <string>constant.language.vcl</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#time-spec</string>
-        </dict>
-        <dict>
-          <key>match</key>
-          <string>\b\d+</string>
+          <string>\b[0-9]+(\b|;)</string>
           <key>name</key>
           <string>constant.numeric.vcl</string>
         </dict>
-        <dict>
-          <key>include</key>
-          <string>#keyword-include</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#comment</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#strings</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#embedded-ruby</string>
-        </dict>
-        <dict>
-          <key>include</key>
-          <string>#embedded-ruby-comment</string>
-        </dict>
+      </array>
+    </dict>
+    <key>string-long</key>
+    <dict>
+      <key>patterns</key>
+      <array>
         <dict>
           <key>begin</key>
-          <string>\{</string>
+          <string>\{"</string>
+          <key>beginCaptures</key>
+          <dict>
+            <key>0</key>
+            <dict>
+              <key>name</key>
+              <string>punctuation.definition.string.begin.vcl</string>
+            </dict>
+          </dict>
+          <key>contentName</key>
+          <string>meta.string-contents.quoted.double.vcl</string>
           <key>end</key>
-          <string>\}</string>
+          <string>"\}</string>
+          <key>endCaptures</key>
+          <dict>
+            <key>0</key>
+            <dict>
+              <key>name</key>
+              <string>punctuation.definition.string.end.vcl</string>
+            </dict>
+          </dict>
+          <key>name</key>
+          <string>string.quoted.long.vcl</string>
+        </dict>
+      </array>
+    </dict>
+    <key>string-double-quoted</key>
+    <dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>begin</key>
+          <string>"</string>
+          <key>beginCaptures</key>
+          <dict>
+            <key>0</key>
+            <dict>
+              <key>name</key>
+              <string>punctuation.definition.string.begin.vcl</string>
+            </dict>
+          </dict>
+          <key>contentName</key>
+          <string>meta.string-contents.quoted.double.vcl</string>
+          <key>end</key>
+          <string>"</string>
+          <key>endCaptures</key>
+          <dict>
+            <key>0</key>
+            <dict>
+              <key>name</key>
+              <string>punctuation.definition.string.end.vcl</string>
+            </dict>
+          </dict>
+          <key>name</key>
+          <string>string.quoted.double.vcl</string>
           <key>patterns</key>
           <array>
             <dict>
-              <key>include</key>
-              <string>#sub-body</string>
+              <key>match</key>
+              <string>\\[\\"]</string>
+              <key>name</key>
+              <string>constant.character.escape.vcl</string>
             </dict>
           </array>
         </dict>
       </array>
     </dict>
-    <key>time-spec</key>
+    <key>string-single-quoted</key>
     <dict>
+      <key>begin</key>
+      <string>'</string>
+      <key>beginCaptures</key>
+      <dict>
+        <key>0</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.string.begin.vcl</string>
+        </dict>
+      </dict>
+      <key>contentName</key>
+      <string>meta.string-contents.quoted.single.vcl</string>
+      <key>end</key>
+      <string>'</string>
+      <key>endCaptures</key>
+      <dict>
+        <key>0</key>
+        <dict>
+          <key>name</key>
+          <string>punctuation.definition.string.end.vcl</string>
+        </dict>
+      </dict>
+      <key>name</key>
+      <string>string.quoted.single.vcl</string>
       <key>patterns</key>
       <array>
         <dict>
           <key>match</key>
-          <string>\d+\s*(s|ms)</string>
+          <string>\\[\\']</string>
           <key>name</key>
-          <string>constant.numeric.time.vcl</string>
+          <string>constant.character.escape.vcl</string>
         </dict>
       </array>
     </dict>
