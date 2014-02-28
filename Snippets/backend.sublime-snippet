@@ -1,0 +1,8 @@
+<snippet>
+    <content>backend ${1:backend_name} {
+    .host = "${2:127.0.0.1}";
+    .port = "${3:80}";
+}</content>
+    <tabTrigger>backend</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>

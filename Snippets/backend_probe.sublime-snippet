@@ -1,0 +1,12 @@
+<snippet>
+    <content>.probe = {
+    .url = "$1";
+    .interval = ${2:30s};
+    .timeout = ${3:10s};
+    .window = ${4:5};
+    .threshold = ${5:3};
+}</content>
+    <tabTrigger>probe</tabTrigger>
+    <scope>source.varnish.vcl meta.backend.vcl</scope>
+</snippet>
+

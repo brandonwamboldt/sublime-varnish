@@ -55,8 +55,10 @@
     <dict>
       <key>name</key>
       <string>meta.director.vcl</string>
-      <key>match</key>
-      <string>(?i)^\s*(director)\s+([a-z0-9_]+)\s+(round\-robin|random|client|hash|dns|fallback)\s*</string>
+      <key>begin</key>
+      <string>(?i)^\s*(director)\s+([a-z0-9_]+)\s+(round\-robin|random|client|hash|dns|fallback)\s*\{</string>
+      <key>end</key>
+      <string>\}</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -75,12 +77,21 @@
           <string>storage.type.director.family.vcl</string>
         </dict>
       </dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>$self</string>
+        </dict>
+      </array>
     </dict>
     <dict>
       <key>name</key>
       <string>meta.backend.vcl</string>
-      <key>match</key>
-      <string>(?i)^\s*(backend)\s+([a-z0-9_]+)\s*</string>
+      <key>begin</key>
+      <string>(?i)^\s*(backend)\s+([a-z0-9_]+)\s*\{</string>
+      <key>end</key>
+      <string>\}</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -94,12 +105,21 @@
           <string>entity.name.type.backend.vcl</string>
         </dict>
       </dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>$self</string>
+        </dict>
+      </array>
     </dict>
     <dict>
       <key>name</key>
       <string>meta.acl.vcl</string>
-      <key>match</key>
-      <string>(?i)^\s*(acl)\s+([a-z0-9_]+)\s*</string>
+      <key>begin</key>
+      <string>(?i)^\s*(acl)\s+([a-z0-9_]+)\s*\{</string>
+      <key>end</key>
+      <string>\}</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -113,6 +133,13 @@
           <string>entity.name.type.acl.vcl</string>
         </dict>
       </dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>$self</string>
+        </dict>
+      </array>
     </dict>
     <dict>
       <key>name</key>
@@ -135,15 +162,11 @@
     </dict>
     <dict>
       <key>name</key>
-      <string>variable.subkey.vcl</string>
-      <key>match</key>
-      <string>\.(max_connections|first_byte_timeout|between_bytes_timeout|probe|host_header|retries|backend|weight|host|list|port|connect_timeout|ttl|suffix|url|request|window|threshold|initial|expected_response|interval|timeout)\b</string>
-    </dict>
-    <dict>
-      <key>name</key>
       <string>meta.subroutine.vcl</string>
-      <key>match</key>
-      <string>(?i)^\s*(sub)\s+([a-z0-9_]+)\s*</string>
+      <key>begin</key>
+      <string>(?i)^\s*(sub)\s+([a-z0-9_]+)\s*\{</string>
+      <key>end</key>
+      <string>\}</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -157,6 +180,13 @@
           <string>entity.name.type.subroutine.vcl</string>
         </dict>
       </dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>include</key>
+          <string>$self</string>
+        </dict>
+      </array>
     </dict>
     <dict>
       <key>match</key>
@@ -239,9 +269,48 @@
       <key>include</key>
       <string>#constants</string>
     </dict>
+    <dict>
+      <key>include</key>
+      <string>#subkeys</string>
+    </dict>
+    <dict>
+      <key>include</key>
+      <string>#blocks</string>
+    </dict>
   </array>
   <key>repository</key>
   <dict>
+    <key>blocks</key>
+    <dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>begin</key>
+          <string>\{</string>
+          <key>end</key>
+          <string>\}</string>
+          <key>patterns</key>
+          <array>
+            <dict>
+              <key>include</key>
+              <string>$self</string>
+            </dict>
+          </array>
+        </dict>
+      </array>
+    </dict>
+    <key>subkeys</key>
+    <dict>
+      <key>patterns</key>
+      <array>
+        <dict>
+          <key>name</key>
+          <string>variable.subkey.vcl</string>
+          <key>match</key>
+          <string>\.(max_connections|first_byte_timeout|between_bytes_timeout|probe|host_header|retries|backend|weight|host|list|port|connect_timeout|ttl|suffix|url|request|window|threshold|initial|expected_response|interval|timeout)\b</string>
+        </dict>
+      </array>
+    </dict>
     <key>constants</key>
     <dict>
       <key>patterns</key>

@@ -1,0 +1,9 @@
+<snippet>
+    <content>director ${1:director_name} ${2:round-robin} {
+    {
+        .backend = ${3:backend_name}
+    }
+}</content>
+    <tabTrigger>director</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>

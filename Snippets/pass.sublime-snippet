@@ -1,0 +1,5 @@
+<snippet>
+    <content>return (pass);</content>
+    <tabTrigger>pass</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>

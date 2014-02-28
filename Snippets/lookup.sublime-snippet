@@ -1,0 +1,5 @@
+<snippet>
+    <content>return (lookup);</content>
+    <tabTrigger>lookup</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>

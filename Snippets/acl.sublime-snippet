@@ -1,0 +1,7 @@
+<snippet>
+    <content>acl ${1:acl_name} {
+  "${2:127.0.0.1}"/32;
+}</content>
+    <tabTrigger>acl</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>
