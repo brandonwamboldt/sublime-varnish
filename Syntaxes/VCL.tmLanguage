@@ -21,13 +21,21 @@
       <key>match</key>
       <string>\#.*</string>
       <key>name</key>
-      <string>comment.line.number-sign</string>
+      <string>comment.line.number-sign.vcl</string>
     </dict>
     <dict>
       <key>match</key>
       <string>\/\/.*</string>
       <key>name</key>
-      <string>comment.line.double-slash</string>
+      <string>comment.line.double-slash.vcl</string>
+    </dict>
+    <dict>
+      <key>begin</key>
+      <string>\/\*</string>
+      <key>end</key>
+      <string>\*\/</string>
+      <key>name</key>
+      <string>comment.block.vcl</string>
     </dict>
     <dict>
       <key>name</key>
