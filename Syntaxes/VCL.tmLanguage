@@ -197,8 +197,10 @@
       </array>
     </dict>
     <dict>
-      <key>match</key>
-      <string>\b(return)\s*\(((deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart)|([^\)]+))\)</string>
+      <key>begin</key>
+      <string>\b(return)\s*\(</string>
+      <key>end</key>
+      <string>\)</string>
       <key>captures</key>
       <dict>
         <key>1</key>
@@ -206,17 +208,20 @@
           <key>name</key>
           <string>keyword.control.vcl</string>
         </dict>
-        <key>3</key>
+      </dict>
+      <key>patterns</key>
+      <array>
         <dict>
+          <key>match</key>
+          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart)</string>
           <key>name</key>
           <string>constant.language.return.vcl</string>
         </dict>
-        <key>4</key>
         <dict>
-          <key>name</key>
-          <string>invalid.illegal.unrecognized.vcl</string>
+          <key>include</key>
+          <string>$self</string>
         </dict>
-      </dict>
+      </array>
     </dict>
     <dict>
       <key>name</key>
@@ -337,7 +342,7 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(hash_data|regsuball|regsub|ban_url|ban|purge)</string>
+          <string>(hash_data|regsuball|regsub|ban_url|ban|purge|synth)</string>
           <key>name</key>
           <string>support.function.builtin.vcl</string>
         </dict>
