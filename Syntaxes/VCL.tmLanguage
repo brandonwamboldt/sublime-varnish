@@ -213,7 +213,7 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart)</string>
+          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart|synth|retry|abandon|ok|fail)</string>
           <key>name</key>
           <string>constant.language.return.vcl</string>
         </dict>
