@@ -213,13 +213,15 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart|synth|retry|abandon|ok|fail)</string>
+          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart|synth|retry|abandon|fail|purge)</string>
           <key>name</key>
           <string>constant.language.return.vcl</string>
         </dict>
         <dict>
-          <key>include</key>
-          <string>$self</string>
+          <key>match</key>
+          <string>.*</string>
+          <key>name</key>
+          <string>meta.error.vcl</string>
         </dict>
       </array>
     </dict>
@@ -233,7 +235,7 @@
         <key>1</key>
         <dict>
           <key>name</key>
-          <string>keyword.control.error.php</string>
+          <string>keyword.control.error</string>
         </dict>
       </dict>
       <key>end</key>
