@@ -217,12 +217,6 @@
           <key>name</key>
           <string>constant.language.return.vcl</string>
         </dict>
-        <dict>
-          <key>match</key>
-          <string>.*</string>
-          <key>name</key>
-          <string>meta.error.vcl</string>
-        </dict>
       </array>
     </dict>
     <dict>
