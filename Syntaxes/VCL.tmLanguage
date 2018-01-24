@@ -248,7 +248,7 @@
     </dict>
     <dict>
       <key>match</key>
-      <string>\b(set|unset|remove|synthetic|call|if|else|elsif|else if)\b</string>
+      <string>\b(set|unset|remove|synthetic|call|if|else|elsif|elseif|else if)\b</string>
       <key>captures</key>
       <dict>
         <key>1</key>
