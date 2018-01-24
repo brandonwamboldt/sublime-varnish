@@ -316,7 +316,7 @@
           <key>name</key>
           <string>variable.subkey.vcl</string>
           <key>match</key>
-          <string>\.(max_connections|first_byte_timeout|between_bytes_timeout|probe|host_header|retries|backend|weight|host|list|port|connect_timeout|ttl|suffix|url|request|window|threshold|initial|expected_response|interval|timeout)\b</string>
+          <string>\.(max_connections|first_byte_timeout|between_bytes_timeout|probe|host_header|retries|backend|weight|host|list|port|connect_timeout|ttl|suffix|url|request|window|threshold|initial|expected_response|interval|timeout|ssl|ssl_nosni|ssl_noverify)\b</string>
         </dict>
       </array>
     </dict>
