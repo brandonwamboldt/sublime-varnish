@@ -213,7 +213,7 @@
       <array>
         <dict>
           <key>match</key>
-          <string>(deliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart|synth|retry|abandon|fail|purge)</string>
+          <string>(deliver_staledeliver|error|fetch|hash|hit_for_pass|lookup|ok|pass|pipe|restart|synth|retry|abandon|fail|purge)</string>
           <key>name</key>
           <string>constant.language.return.vcl</string>
         </dict>
@@ -345,6 +345,12 @@
         <dict>
           <key>match</key>
           <string>std\.(log|toupper|tolower|set_ip_tos|random|log|syslog|fileread|collect|duration|integer|ip)</string>
+          <key>name</key>
+          <string>support.function.module.std.vcl</string>
+        </dict>
+        <dict>
+          <key>match</key>
+          <string>table\.(lookup)</string>
           <key>name</key>
           <string>support.function.module.std.vcl</string>
         </dict>

@@ -1,0 +1,5 @@
+<snippet>
+    <content>table.lookup(${1}, "${2}");</content>
+    <tabTrigger>table</tabTrigger>
+    <scope>source.varnish.vcl</scope>
+</snippet>
