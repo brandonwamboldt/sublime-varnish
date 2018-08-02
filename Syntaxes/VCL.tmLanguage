@@ -352,7 +352,7 @@
           <key>match</key>
           <string>table\.(lookup)</string>
           <key>name</key>
-          <string>support.function.module.std.vcl</string>
+          <string>support.function.module.table.vcl</string>
         </dict>
         <dict>
           <key>match</key>
